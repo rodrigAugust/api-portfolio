@@ -16,11 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->date('beginning');
             $table->date('end');
-            $table->string('institution');
+            $table->string('badge')->nullable();
             $table->unsignedBigInteger('id_gender');
+            $table->unsignedBigInteger('id_institution');
+            $table->unsignedBigInteger('id_user');
             $table->timestamps();
 
             $table->foreign('id_gender')->references('id')->on('genders');
+            $table->foreign('id_institution')->references('id')->on('institutions');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

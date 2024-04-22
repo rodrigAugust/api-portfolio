@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('id_gender');
             $table->string('url');
+            $table->bigInteger('likes');
+            $table->unsignedBigInteger('id_gender');
+            $table->unsignedBigInteger('id_user');
             $table->timestamps();
 
             $table->foreign('id_gender')->references('id')->on('genders');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
