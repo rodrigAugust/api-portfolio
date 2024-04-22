@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  laravel:
+    image: bitnami/laravel:latest
+    container_name: laravel
+    ports:
+      - 8080:8000
+    external_links:
+      - postgres:5432
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=[USER]
+      - DB_DATABASE=portfolio
+      - DB_PASSWORD=[PASSWORD]
+    volumes:
+      - /home/rodrigo/projetos/api-portfolio:/app
+
+networks:
+  default:
+    external:
+      name: portfolio
