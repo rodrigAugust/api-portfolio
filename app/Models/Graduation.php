@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Graduations extends Model
+class Graduation extends Model
 {
     use HasFactory;
 
@@ -18,4 +18,55 @@ class Graduations extends Model
         'id_institution',
         'id_user',
     ];
+
+    public function store($graduation){
+        $this->fill($graduation);
+        $this->save();
+        
+        return ['status' => 200];
+    }
+
+    public function edit($info_edit, $id){
+        $graduation = Graduation::find($id);
+
+        if(!$graduation){
+            return ['status' => 404];
+        }
+
+        $graduation->fill($info_edit);
+        $graduation->save();
+
+        return['status'=>200];
+    }
+
+    public function erase($id){
+        $graduation = Graduation::find($id);
+
+        if(!$graduation){
+            return ['status' => 404];
+        }
+
+        $graduation->delete();
+        
+        return ['status' => 200];
+    }
+
+    public function listAll($id_user){
+        $graduation = Graduation::where('id_user', $id_user)
+            ->get();
+
+        return $graduation;
+    }
+
+    public function genders(){
+        return $this->belongsTo(Gender::class, 'id_gender', 'id');
+    }
+
+    public function institutions(){
+        return $this->belongsTo(Institution::class, 'id_institution', 'id');
+    }
+
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }

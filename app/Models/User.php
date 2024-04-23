@@ -65,7 +65,7 @@ class User extends Authenticatable
         return ['status' => 200];
     }
 
-    public function information($id){
+    public function info($id){
         $user = User::where('id', $id)
             ->get();
 

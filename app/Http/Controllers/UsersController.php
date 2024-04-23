@@ -28,4 +28,10 @@ class UsersController extends Controller
 
         return $status;
     }
+
+    public function info ($id){
+        $user = $this->user->info($id);
+
+        return $user;
+    }
 }
