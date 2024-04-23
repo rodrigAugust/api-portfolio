@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GendersController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//Routes Gender
+Route::post('/gender/store', [GendersController::class,'store']);
+Route::put('/gender/edit/{id}', [GendersController::class,'edit']);
+Route::delete('/gender/erase/{id}', [GendersController::class,'erase']);
+Route::get('/gender/listall/{id_user}', [GendersController::class,'listAll']);
+
+// Routes Users
 Route::post('/user/store', [UsersController::class, 'store']);
-Route::post('/user/edit/{id}', [UsersController::class, 'edit']);
-Route::post('/user/erase/{id}', [UsersController::class, 'erase']);
-Route::post('/user/information/{id}', [UsersController::class, 'information']);
-
-
-Route::post('/gender/store', 'GenderController@store');
+Route::get('/user/information/{id}', [UsersController::class, 'information']);
+Route::put('/user/edit/{id}', [UsersController::class, 'edit']);
+Route::delete('/user/erase/{id}', [UsersController::class, 'erase']);
