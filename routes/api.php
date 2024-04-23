@@ -3,6 +3,7 @@
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\GraduationsController;
 use App\Http\Controllers\InstitutionsController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,13 @@ Route::delete('/institution/erase/{id}', [InstitutionsController::class,'erase']
 Route::get('/institution/listall/{id_user}', [InstitutionsController::class,'listAll']);
 Route::post('/institution/store', [InstitutionsController::class,'store']);
 Route::put('/institution/edit/{id}', [InstitutionsController::class,'edit']);
+
+// Routes Projects
+Route::delete('/project/erase/{id}', [ProjectsController::class,'erase']);
+Route::get('/project/listall/{id_user}', [ProjectsController::class,'listAll']);
+Route::post('/project/store', [ProjectsController::class,'store']);
+Route::put('/project/edit/{id}', [ProjectsController::class,'edit']);
+Route::put('/project/like/{id}', [ProjectsController::class,'like']);
 
 // Routes Users
 Route::delete('/user/erase/{id}', [UsersController::class, 'erase']);
