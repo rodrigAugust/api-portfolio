@@ -30,9 +30,15 @@ class ProjectsController extends Controller
     }
 
     public function listAll($id_user){
-        $status = $this->project->listAll($id_user);
+        $projects = $this->project->listAll($id_user);
 
-        return $status;
+        return $projects;
+    }
+
+    public function listByGender($id_gender){
+        $projects = $this->project->listByGender($id_gender);
+
+        return $projects;
     }
 
     public function like($operation, $id){

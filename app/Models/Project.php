@@ -57,6 +57,13 @@ class Project extends Model
         return $projects;
     }
 
+    public function listByGender($id_gender){
+        $projects = Project::where('id_gender', $id_gender)
+            ->get();
+
+        return $projects;
+    }
+
     public function like($operation, $id){
         $project = Project::find($id);
 

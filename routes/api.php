@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 */
 // Routes Genders
 Route::delete('/gender/erase/{id}', [GendersController::class,'erase']);
-Route::get('/gender/listall/{id_user}', [GendersController::class,'listAll']);
+Route::get('/gender/list/{id_user}', [GendersController::class,'listAll']);
 Route::post('/gender/store', [GendersController::class,'store']);
 Route::put('/gender/edit/{id}', [GendersController::class,'edit']);
 
 // Routes Graduation
 Route::delete('/graduation/erase/{id}', [GraduationsController::class,'erase']);
-Route::get('/graduation/listall/{id_user}', [GraduationsController::class,'listAll']);
+Route::get('/graduation/list/{id_user}', [GraduationsController::class,'listAll']);
+Route::get('/graduation/filter/{id_gender}', [GraduationsController::class,'listByGender']);
 Route::post('/graduation/store', [GraduationsController::class,'store']);
 Route::put('/graduation/edit/{id}', [GraduationsController::class,'edit']);
 

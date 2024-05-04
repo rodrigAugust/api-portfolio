@@ -52,10 +52,17 @@ class Graduation extends Model
     }
 
     public function listAll($id_user){
-        $graduation = Graduation::where('id_user', $id_user)
+        $graduations = Graduation::where('id_user', $id_user)
             ->get();
 
-        return $graduation;
+        return $graduations;
+    }
+
+    public function listByGender($id_gender){
+        $graduations = Graduation::where('id_gender', $id_gender)
+            ->get();
+
+        return $graduations;
     }
 
     public function genders(){
